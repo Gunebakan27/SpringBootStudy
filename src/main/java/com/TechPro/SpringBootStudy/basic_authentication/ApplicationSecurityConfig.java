@@ -25,11 +25,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable() //ey springboot put delete patch calistir sorumluluk benim... Bu methodlarin block'unu kaldir
                 .authorizeRequests()// Rewuestler icin yetki sorgula (get put patch delete post
                 .antMatchers("/","index","/css/*","/js/*") // girilen url'lere izin veriyor
 //                .not()  yazilan sayfalara girmesine izin vermez
-//                .permitAll()
-                .denyAll()
+                .permitAll()
+//                .denyAll()
 
                 .anyRequest() // her request icin
                 .authenticated() // kullanici sorgula
